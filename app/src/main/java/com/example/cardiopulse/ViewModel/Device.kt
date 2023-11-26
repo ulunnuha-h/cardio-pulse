@@ -10,6 +10,9 @@ import com.polar.sdk.api.PolarBleApiCallback
 import com.polar.sdk.api.PolarBleApiDefaultImpl.defaultImplementation
 import com.polar.sdk.api.errors.PolarInvalidArgument
 import com.polar.sdk.api.model.PolarDeviceInfo
+import com.polar.sdk.api.model.PolarHrData
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.Disposable
 import java.util.UUID
 
 class Device : ViewModel() {
@@ -29,7 +32,6 @@ class Device : ViewModel() {
 
     fun connectDevice(context : Context){
         api = defaultImplementation(context, setOf(
-            PolarBleApi.PolarBleSdkFeature.FEATURE_POLAR_ONLINE_STREAMING,
             PolarBleApi.PolarBleSdkFeature.FEATURE_BATTERY_INFO,
             PolarBleApi.PolarBleSdkFeature.FEATURE_DEVICE_INFO
         ))
@@ -55,28 +57,6 @@ class Device : ViewModel() {
                 status.value = "Disconnected";
             }
 
-            override fun bleSdkFeatureReady(
-                identifier: String,
-                feature: PolarBleApi.PolarBleSdkFeature
-            ) {
-                status.value = "Feature Ready";
-                Log.d(TAG, "feature ready $feature")
-
-//                when (feature) {
-//                    PolarBleApi.PolarBleSdkFeature.FEATURE_POLAR_ONLINE_STREAMING -> {
-//                        streamHR()
-//                    }
-//                    else -> {}
-//                }
-            }
-
-            override fun disInformationReceived(identifier: String, uuid: UUID, value: String) {
-                if (uuid == UUID.fromString("00002a28-0000-1000-8000-00805f9b34fb")) {
-                    val msg = "Firmware: " + value.trim { it <= ' ' }
-                    Log.d(TAG, "Firmware: " + identifier + " " + value.trim { it <= ' ' })
-                }
-            }
-
             override fun batteryLevelReceived(identifier: String, level: Int) {
                 Log.d(TAG, "Battery level $identifier $level%")
                 battery.value = level.toString();
@@ -91,5 +71,4 @@ class Device : ViewModel() {
             a.printStackTrace()
         }
     }
-
 }

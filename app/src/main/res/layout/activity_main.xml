@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -20,13 +21,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="8dp"
+            android:padding="8dp"
+            android:background="@drawable/shape"
             android:layout_gravity="center">
 
             <LinearLayout
                 android:layout_width="332dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_weight="1">
 
                 <TextView
                     android:id="@+id/textId"
@@ -54,38 +57,61 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="Connect button"
-                android:src="@android:drawable/btn_star"
+                android:paddingHorizontal="12dp"
+                android:src="@android:drawable/ic_menu_edit"
+                android:background="@color/white"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <TextView
+            android:id="@+id/ResultTitle"
             android:layout_width="match_parent"
-            android:layout_height="579dp">
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="6dp"
+            android:text="Result History" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_weight="0.8"
+            android:paddingVertical="12dp">
 
         </androidx.recyclerview.widget.RecyclerView>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_gravity="end">
 
             <EditText
-                android:id="@+id/editTextText3"
+                android:id="@+id/ageInput"
                 android:layout_width="wrap_content"
                 android:layout_height="52dp"
-                android:layout_marginRight="24dp"
-                android:layout_weight="1"
+                android:layout_weight="0.3"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Age" />
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:hint="Input Age"/>
 
+            <Button
+                android:id="@+id/EcgButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:text="Start ECG" />
             <Button
                 android:id="@+id/startButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Start" />
+                android:text="Start HR" />
         </LinearLayout>
     </LinearLayout>
 
