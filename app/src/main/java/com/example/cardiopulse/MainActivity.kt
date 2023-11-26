@@ -128,8 +128,8 @@ class MainActivity : AppCompatActivity() {
             val textId = findViewById<TextView>(R.id.textId);
             textId.setText("ID : "+text);
             device.setId(text)
-            checkBT()
-            device.connectDevice(this@MainActivity)
+//            checkBT()
+//            device.connectDevice(this@MainActivity)
             dialog.dismiss()
         }
 
