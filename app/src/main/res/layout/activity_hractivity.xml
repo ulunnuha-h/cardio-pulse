@@ -139,6 +139,7 @@
                     android:layout_height="wrap_content"
                     android:text="12 Desember 2023"
                     android:textAlignment="textEnd" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

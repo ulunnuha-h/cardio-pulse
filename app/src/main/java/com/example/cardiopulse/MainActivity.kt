@@ -68,7 +68,13 @@ class MainActivity : AppCompatActivity() {
 
         val device = ViewModelProvider(this).get(Device::class.java)
         resultVM= ViewModelProvider(this).get(ResultViewModel::class.java)
-        val resultAdapter = ResultAdapter(resultVM.getResults());
+        val resultAdapter = ResultAdapter(resultVM.getResults(), object : ResultAdapter.OnDeleteResultListener {
+            override fun onDeleteResult(position: Int) {
+
+                resultVM.deleteResult(position)
+            }
+        })
+
         resultVM.getResultLiveData().observe(this, {resultAdapter.notifyDataSetChanged()})
 
         val rvResult = findViewById<RecyclerView>(R.id.rvResult)
