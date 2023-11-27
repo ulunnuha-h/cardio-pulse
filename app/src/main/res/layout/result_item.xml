@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:padding="12dp"
         android:background="@drawable/shape"
@@ -96,6 +97,7 @@
             android:layout_gravity="bottom"
             android:orientation="vertical">
 
+
             <TextView
                 android:id="@+id/MeasureType"
                 android:layout_width="match_parent"
@@ -117,6 +119,16 @@
                 android:layout_height="wrap_content"
                 android:text="12 Desember 2023"
                 android:textAlignment="textEnd" />
+
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="81dp"
+                android:text="Delete"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/HRDate" />
+
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
